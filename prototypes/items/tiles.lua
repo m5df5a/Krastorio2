@@ -16,22 +16,22 @@ data:extend({
       {
         filename = "__Krastorio2Assets__/icons/items/biomass.png",
         size = 64,
-        scale = 0.25,
+        scale = 0.5,
       },
       {
         filename = "__Krastorio2Assets__/icons/items/biomass-1.png",
         size = 64,
-        scale = 0.25,
+        scale = 0.5,
       },
       {
         filename = "__Krastorio2Assets__/icons/items/biomass-2.png",
         size = 64,
-        scale = 0.25,
+        scale = 0.5,
       },
       {
         filename = "__Krastorio2Assets__/icons/items/biomass-3.png",
         size = 64,
-        scale = 0.25,
+        scale = 0.5,
       },
     },
   },

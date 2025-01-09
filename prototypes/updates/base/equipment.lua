@@ -56,13 +56,13 @@ data.raw.item["battery-equipment"].pictures = {
     {
       filename = "__Krastorio2Assets__/icons/equipment/battery-mk1-equipment.png",
       size = 64,
-      scale = 0.25,
+      scale = 0.5,
       mipmap_count = 4,
     },
     {
       filename = "__Krastorio2Assets__/icons/equipment/battery-equipment-light.png",
       size = 64,
-      scale = 0.25,
+      scale = 0.5,
       mipmap_count = 4,
       flags = { "light" },
       draw_as_light = true,
@@ -83,13 +83,13 @@ data.raw.item["battery-mk2-equipment"].pictures = {
     {
       filename = "__Krastorio2Assets__/icons/equipment/battery-mk2-equipment.png",
       size = 64,
-      scale = 0.25,
+      scale = 0.5,
       mipmap_count = 4,
     },
     {
       filename = "__Krastorio2Assets__/icons/equipment/battery-equipment-light.png",
       size = 64,
-      scale = 0.25,
+      scale = 0.5,
       mipmap_count = 4,
       draw_as_light = true,
       flags = { "light" },
@@ -178,6 +178,6 @@ update_equipment_graphics("exoskeleton-equipment", "exoskeleton-equipment", 64, 
 update_equipment_graphics("fission-reactor-equipment", "fission-reactor-equipment", 64, { 128, 128 }, 2)
 update_equipment_graphics("night-vision-equipment", "night-vision-equipment", 64, { 64, 64 }, 1)
 update_equipment_graphics("personal-laser-defense-equipment", "personal-laser-defense-mk1-equipment", 64, { 64, 64 }, 1)
-update_equipment_graphics("personal-roboport-equipment", "personal-roboport-equipment", 64, { 64, 64 }, 1)
-update_equipment_graphics("personal-roboport-mk2-equipment", "personal-roboport-mk2-equipment", 64, { 64, 64 }, 2)
+update_equipment_graphics("personal-roboport-equipment", "personal-roboport-equipment", 64, { 120, 64 }, 1)
+update_equipment_graphics("personal-roboport-mk2-equipment", "personal-roboport-mk2-equipment", 64, { 120, 64 }, 2)
 update_equipment_graphics("solar-panel-equipment", "solar-panel-equipment", 64, { 32, 32 }, 1)

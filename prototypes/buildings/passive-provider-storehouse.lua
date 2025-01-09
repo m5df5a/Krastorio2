@@ -53,7 +53,7 @@ data:extend({
       priority = "extra-high",
       width = 340,
       height = 340,
-      scale = 0.25,
+      scale = 0.5,
     },
     opened_duration = logistic_chest_opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],

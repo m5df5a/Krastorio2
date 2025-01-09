@@ -241,7 +241,7 @@ data:extend({
       width = 64,
       height = 64,
       priority = "high",
-      scale = 0.25,
+      scale = 0.5,
     },
     smoke = {
       {

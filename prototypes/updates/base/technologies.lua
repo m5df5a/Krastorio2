@@ -31,6 +31,7 @@ data_util.add_prerequisite("spidertron", "kr-ai-core")
 data_util.add_prerequisite("steel-axe", "kr-iron-pickaxe")
 data_util.add_prerequisite("stone-wall", "military")
 data_util.add_prerequisite("tank", "kr-fuel")
+data_util.add_prerequisite("utility-science-pack", "kr-advanced-lab")
 data_util.add_prerequisite("utility-science-pack", "kr-research-server")
 data_util.add_prerequisite("utility-science-pack", "rocket-fuel")
 
