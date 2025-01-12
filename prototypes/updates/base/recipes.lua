@@ -698,13 +698,13 @@ data.raw.recipe["logistic-science-pack"] = {
   name = "logistic-science-pack",
   allow_productivity = true,
   enabled = false,
-  energy_required = 20,
+  energy_required = 4,
   ingredients = {
-    { type = "item", name = "blank-tech-card", amount = 5 },
-    { type = "item", name = "electronic-circuit", amount = 5 },
-    { type = "item", name = "iron-gear-wheel", amount = 5 },
+    { type = "item", name = "blank-tech-card", amount = 1 },
+    { type = "item", name = "electronic-circuit", amount = 1 },
+    { type = "item", name = "iron-gear-wheel", amount = 1 },
   },
-  results = { { type = "item", name = "logistic-science-pack", amount = 5 } },
+  results = { { type = "item", name = "logistic-science-pack", amount = 1 } },
 }
 
 data.raw.recipe["military-science-pack"] = {
@@ -727,14 +727,14 @@ data.raw.recipe["chemical-science-pack"] = {
   category = "crafting-with-fluid",
   allow_productivity = true,
   enabled = false,
-  energy_required = 20,
+  energy_required = 4,
   ingredients = {
-    { type = "item", name = "blank-tech-card", amount = 5 },
-    { type = "item", name = "glass", amount = 15 },
-    { type = "item", name = "advanced-circuit", amount = 5 },
-    { type = "fluid", name = "sulfuric-acid", amount = 50 },
+    { type = "item", name = "blank-tech-card", amount = 1 },
+    { type = "item", name = "glass", amount = 3 },
+    { type = "item", name = "advanced-circuit", amount = 1 },
+    { type = "fluid", name = "sulfuric-acid", amount = 10 },
   },
-  results = { { type = "item", name = "chemical-science-pack", amount = 5 } },
+  results = { { type = "item", name = "chemical-science-pack", amount = 1 } },
 }
 
 data.raw.recipe["production-science-pack"] = {
@@ -743,14 +743,14 @@ data.raw.recipe["production-science-pack"] = {
   category = "t2-tech-cards",
   allow_productivity = true,
   enabled = false,
-  energy_required = 20,
+  energy_required = 4,
   ingredients = {
-    { type = "item", name = "blank-tech-card", amount = 10 },
-    { type = "item", name = "fast-transport-belt", amount = 10 },
-    { type = "item", name = "productivity-module", amount = 5 },
-    { type = "item", name = "uranium-238", amount = 5 },
+    { type = "item", name = "blank-tech-card", amount = 2 },
+    { type = "item", name = "fast-transport-belt", amount = 2 },
+    { type = "item", name = "productivity-module", amount = 1 },
+    { type = "item", name = "uranium-238", amount = 1 },
   },
-  results = { { type = "item", name = "production-science-pack", amount = 5 } },
+  results = { { type = "item", name = "production-science-pack", amount = 1 } },
 }
 
 data.raw.recipe["utility-science-pack"] = {
@@ -759,14 +759,14 @@ data.raw.recipe["utility-science-pack"] = {
   category = "t2-tech-cards",
   allow_productivity = true,
   enabled = false,
-  energy_required = 20,
+  energy_required = 4,
   ingredients = {
-    { type = "item", name = "blank-tech-card", amount = 10 },
-    { type = "item", name = "processing-unit", amount = 5 },
-    { type = "item", name = "rocket-fuel", amount = 5 },
-    { type = "item", name = "low-density-structure", amount = 5 },
+    { type = "item", name = "blank-tech-card", amount = 2 },
+    { type = "item", name = "processing-unit", amount = 1 },
+    { type = "item", name = "rocket-fuel", amount = 1 },
+    { type = "item", name = "low-density-structure", amount = 1 },
   },
-  results = { { type = "item", name = "utility-science-pack", amount = 5 } },
+  results = { { type = "item", name = "utility-science-pack", amount = 1 } },
 }
 
 -- TODO: Do we want the custom heavy/light oil icons?
