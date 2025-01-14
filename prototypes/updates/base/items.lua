@@ -126,7 +126,9 @@ data.raw.item["rocket-fuel"].fuel_emissions_multiplier = 1.25
 data.raw.item["rocket-silo"].subgroup = "radars-and-rockets"
 data.raw.item["rocket-silo"].order = "zzz[rocket-silo]"
 
-data.raw.item["satellite"].research_products = { { type = "item", name = "space-research-data", amount = 1000 } }
+if not mods["space-age"] then
+    data.raw.item["satellite"].rocket_launch_products = { { type = "item", name = "space-research-data", amount = 1000 } }
+end
 
 data.raw.item["small-electric-pole"].fuel_value = "1.5MJ" --nil
 data.raw.item["small-electric-pole"].fuel_category = "chemical"

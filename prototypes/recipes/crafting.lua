@@ -1,3 +1,28 @@
+local gps_satellite = {
+    type = "recipe",
+    name = "gps-satellite",
+    enabled = false,
+    energy_required = 5,
+    ingredients = {
+        { type = "item", name = "satellite", amount = 1 },
+        { type = "item", name = "processing-unit", amount = 1 },
+        { type = "item", name = "ai-core", amount = 4 },
+    },
+    results = { { type = "item", name = "gps-satellite", amount = 1 } },
+}
+
+if mods["space-age"] then
+    gps_satellite.ingredients = {       
+        { type = "item", name = "processing-unit", amount = 100 },
+        { type = "item", name = "low-density-structure", amount = 100 },
+        { type = "item", name = "rocket-fuel", amount = 50 },
+        { type = "item", name = "solar-panel", amount = 100 },
+        { type = "item", name = "accumulator", amount = 100 },
+        { type = "item", name = "radar", amount = 5 },
+        { type = "item", name = "ai-core", amount = 4 },
+    }
+end
+
 data:extend({
   {
     type = "recipe",
@@ -188,18 +213,7 @@ data:extend({
     results = { { type = "item", name = "first-aid-kit", amount = 1 } },
     allow_productivity = true,
   },
-  {
-    type = "recipe",
-    name = "gps-satellite",
-    enabled = false,
-    energy_required = 5,
-    ingredients = {
-      { type = "item", name = "satellite", amount = 1 },
-      { type = "item", name = "processing-unit", amount = 1 },
-      { type = "item", name = "ai-core", amount = 4 },
-    },
-    results = { { type = "item", name = "gps-satellite", amount = 1 } },
-  },
+  gps_satellite,
   {
     type = "recipe",
     name = "heavy-rocket",

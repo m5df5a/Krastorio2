@@ -37,14 +37,18 @@ data_util.add_prerequisite("utility-science-pack", "rocket-fuel")
 
 data_util.remove_prerequisite("atomic-bomb", "military-4")
 data_util.remove_prerequisite("battery-equipment", "solar-panel-equipment")
-data_util.remove_prerequisite("battery-mk2-equipment", "low-density-structure")
-data_util.remove_prerequisite("efficiency-module-2", "processing-unit")
+if not mods["space-age"] then
+    data_util.remove_prerequisite("battery-mk2-equipment", "low-density-structure")
+    data_util.remove_prerequisite("efficiency-module-2", "processing-unit")
+end
 data_util.remove_prerequisite("engine", "steel-processing")
 data_util.remove_prerequisite("fluid-handling", "automation-2")
 data_util.remove_prerequisite("gate", "military-2")
 data_util.remove_prerequisite("heavy-armor", "military")
-data_util.remove_prerequisite("productivity-module-2", "processing-unit")
-data_util.remove_prerequisite("speed-module-2", "processing-unit")
+if not mods["space-age"] then
+    data_util.remove_prerequisite("productivity-module-2", "processing-unit")
+    data_util.remove_prerequisite("speed-module-2", "processing-unit")
+end
 
 data_util.convert_research_unit_ingredient("military", "automation-science-pack", "basic-tech-card")
 data_util.convert_research_unit_ingredient("stone-wall", "automation-science-pack", "basic-tech-card")
@@ -67,7 +71,9 @@ data_util.add_recipe_unlock("battery-mk2-equipment", "big-battery-mk2-equipment"
 data_util.add_recipe_unlock("coal-liquefaction", "coal-filtration")
 data_util.add_recipe_unlock("coal-liquefaction", "coke-liquefaction")
 data_util.add_recipe_unlock("electric-engine", "additional-engine-equipment")
-data_util.add_recipe_unlock(kr_optimization_tech_card_name, kr_optimization_tech_card_name)
+if not mods["space-age"] then
+    data_util.add_recipe_unlock(kr_optimization_tech_card_name, kr_optimization_tech_card_name)
+end
 data_util.add_recipe_unlock("landfill", "landfill-2")
 data_util.add_recipe_unlock("logistics", "inserter")
 data_util.add_recipe_unlock("logistics", "long-handed-inserter")
@@ -115,7 +121,9 @@ data.raw.technology["laser"].unit.count = 200
 data.raw.technology["logistic-system"].unit.count = 250
 data.raw.technology["low-density-structure"].unit.count = 500
 data.raw.technology["military-4"].unit.count = 350
-data.raw.technology["mining-productivity-3"].unit.count = 500
+if not mods["space-age"] then
+    data.raw.technology["mining-productivity-3"].unit.count = 500
+end
 data.raw.technology["nuclear-fuel-reprocessing"].unit.count = 250
 data.raw.technology["nuclear-power"].unit.count = 500
 data.raw.technology["production-science-pack"].unit.count = 250
@@ -133,10 +141,10 @@ data.raw.technology["follower-robot-count-5"].max_level = nil
 data.raw.technology["laser-weapons-damage-7"].max_level = 10
 data.raw.technology["laser-weapons-damage-7"].unit.count_formula = "((L-6)^2)*3000"
 data.raw.technology["laser-weapons-damage-7"].unit.count = nil
-
-data.raw.technology["mining-productivity-4"].unit.count_formula = "(L^2)*200"
-data.raw.technology["mining-productivity-4"].max_level = 10
-
+if not mods["space-age"] then
+    data.raw.technology["mining-productivity-4"].unit.count_formula = "(L^2)*200"
+    data.raw.technology["mining-productivity-4"].max_level = 10
+end
 data.raw.technology["physical-projectile-damage-7"].max_level = 10
 data.raw.technology["physical-projectile-damage-7"].unit.count_formula = "((L-6)^2)*3000"
 
@@ -147,6 +155,7 @@ data.raw.technology["stronger-explosives-7"].max_level = 10
 data.raw.technology["stronger-explosives-7"].unit.count_formula = "((L-6)^2)*3000"
 
 data.raw.technology["worker-robots-speed-6"].unit.count_formula = "((L-5)^2)*5000"
+data.raw.technology["worker-robots-speed-6"].unit.count = nil
 data.raw.technology["worker-robots-speed-6"].max_level = nil
 
 data_util.set_icons(data.raw.technology["fission-reactor-equipment"], {
@@ -188,39 +197,45 @@ data_util.set_icon(data.raw.technology["steel-processing"], "__Krastorio2Assets_
 data_util.set_icon(data.raw.technology["utility-science-pack"], "__Krastorio2Assets__/technologies/utility-tech-card.png", 256)
 -- stylua: ignore end
 
-data:extend({
-  {
+local mining_productivity_11 = {
     type = "technology",
     name = "mining-productivity-11",
     icons = {
-      { icon = "__base__/graphics/technology/mining-productivity.png", icon_size = 256 },
-      {
+        { icon = "__base__/graphics/technology/mining-productivity.png", icon_size = 256 },
+        {
         icon = "__core__/graphics/icons/technology/constants/constant-mining-productivity.png",
         icon_size = 128,
         shift = { 50, 50 },
         scale = 0.5,
-      },
+        },
     },
     icon_size = 256,
     order = "c-k-f-w",
     max_level = 15,
     upgrade = true,
     unit = {
-      time = 60,
-      count_formula = "(L^2)*200",
-      ingredients = {
-        { "production-science-pack", 1 },
-        { "utility-science-pack", 1 },
-        { kr_optimization_tech_card_name, 1 },
-        { "matter-tech-card", 1 },
-        { "advanced-tech-card", 1 },
-      },
+        time = 60,
+        count_formula = "(L^2)*200",
+        ingredients = {
+            { "production-science-pack", 1 },
+            { "utility-science-pack", 1 },
+            { kr_optimization_tech_card_name, 1 },
+            { "matter-tech-card", 1 },
+            { "advanced-tech-card", 1 },
+        },
     },
     prerequisites = { "mining-productivity-4", "kr-advanced-tech-card" },
     effects = {
-      { type = "mining-drill-productivity-bonus", modifier = 0.1 },
+        { type = "mining-drill-productivity-bonus", modifier = 0.1 },
     },
-  },
+}
+if mods["space-age"] then
+    mining_productivity_11.prerequisites = { "mining-productivity-3", "kr-advanced-tech-card" }
+    data.raw.technology["mining-productivity-3"].max_level = 10
+end
+
+data:extend({
+  mining_productivity_11,
   {
     type = "technology",
     name = "mining-productivity-16",
