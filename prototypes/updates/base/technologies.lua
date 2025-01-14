@@ -4,9 +4,11 @@ data_util.add_prerequisite("advanced-circuit", "electronics")
 data_util.add_prerequisite("advanced-circuit", "kr-silicon-processing")
 data_util.add_prerequisite("atomic-bomb", "kr-military-5")
 data_util.add_prerequisite("automation", "kr-automation-core")
+data_util.add_prerequisite("automation-science-pack", "electronics")
 data_util.add_prerequisite("automobilism", "kr-fuel")
 data_util.add_prerequisite("battery-equipment", "modular-armor")
 data_util.add_prerequisite("efficiency-module-3", "processing-unit")
+data_util.add_prerequisite("electronics", "kr-automation-core")
 data_util.add_prerequisite("fast-inserter", "electronics")
 data_util.add_prerequisite("fast-inserter", "logistics")
 data_util.add_prerequisite("fast-inserter", "steel-processing")
@@ -14,12 +16,11 @@ data_util.add_prerequisite("fission-reactor-equipment", "kr-fusion-energy")
 data_util.add_prerequisite("fluid-handling", "kr-basic-fluid-handling")
 data_util.add_prerequisite("gate", "electronics")
 data_util.add_prerequisite("heavy-armor", "light-armor")
-data_util.add_prerequisite("kr-automation-core", "electronics")
-data_util.add_prerequisite("kr-iron-pickaxe", "electronics")
-data_util.add_prerequisite(kr_optimization_tech_card_name, "kr-singularity-lab")
+data_util.add_prerequisite("kr-basic-fluid-handling", "steam-power")
+data_util.add_prerequisite("kr-iron-pickaxe", "kr-automation-core")
 data_util.add_prerequisite("lamp", "kr-stone-processing")
-data_util.add_prerequisite("logistics-2", "steel-processing")
 data_util.add_prerequisite("logistic-science-pack", "electronics")
+data_util.add_prerequisite("logistics-2", "steel-processing")
 data_util.add_prerequisite("military", "electronics")
 data_util.add_prerequisite("military-science-pack", "advanced-circuit")
 data_util.add_prerequisite("modular-armor", "military-2")
@@ -28,27 +29,32 @@ data_util.add_prerequisite("production-science-pack", "kr-advanced-lab")
 data_util.add_prerequisite("production-science-pack", "kr-research-server")
 data_util.add_prerequisite("production-science-pack", "uranium-processing")
 data_util.add_prerequisite("productivity-module-3", "processing-unit")
+data_util.add_prerequisite("research-speed-1", "kr-laboratory")
 data_util.add_prerequisite("solar-energy", "kr-silicon-processing")
 data_util.add_prerequisite("speed-module-3", "processing-unit")
 data_util.add_prerequisite("spidertron", "kr-ai-core")
-data_util.add_prerequisite("steam-power", "electronics")
+data_util.add_prerequisite("steam-power", "kr-automation-core")
 data_util.add_prerequisite("steel-axe", "kr-iron-pickaxe")
 data_util.add_prerequisite("stone-wall", "military")
 data_util.add_prerequisite("tank", "kr-fuel")
 data_util.add_prerequisite("utility-science-pack", "kr-advanced-lab")
 data_util.add_prerequisite("utility-science-pack", "kr-research-server")
 data_util.add_prerequisite("utility-science-pack", "rocket-fuel")
+data_util.add_prerequisite(kr_optimization_tech_card_name, "kr-singularity-lab")
 
 data_util.remove_prerequisite("atomic-bomb", "military-4")
+data_util.remove_prerequisite("automation", "automation-science-pack")
 data_util.remove_prerequisite("battery-equipment", "solar-panel-equipment")
 if not mods["space-age"] then
     data_util.remove_prerequisite("battery-mk2-equipment", "low-density-structure")
     data_util.remove_prerequisite("efficiency-module-2", "processing-unit")
 end
+data_util.remove_prerequisite("engine", "logistic-science-pack")
 data_util.remove_prerequisite("engine", "steel-processing")
 data_util.remove_prerequisite("fluid-handling", "automation-2")
 data_util.remove_prerequisite("gate", "military-2")
 data_util.remove_prerequisite("heavy-armor", "military")
+data_util.remove_prerequisite("research-speed-1", "automation-2")
 if not mods["space-age"] then
     data_util.remove_prerequisite("productivity-module-2", "processing-unit")
     data_util.remove_prerequisite("speed-module-2", "processing-unit")
@@ -99,10 +105,21 @@ if settings.startup["kr-loaders"].value then
 end
 
 data_util.remove_recipe_unlock("automation", "long-handed-inserter")
+data_util.remove_recipe_unlock("electronics", "copper-cable")
 data_util.remove_recipe_unlock("electronics", "lab")
+data_util.remove_recipe_unlock("electronics", "small-electric-pole")
 data_util.remove_recipe_unlock("kovarex-enrichment-process", "nuclear-fuel")
 data_util.remove_recipe_unlock("military-3", "slowdown-capsule")
 data_util.remove_recipe_unlock("oil-processing", "chemical-plant")
+
+data.raw.technology["electronics"].research_trigger = nil
+data.raw.technology["electronics"].unit = {
+  time = 10,
+  count = 10,
+  ingredients = {
+    { "basic-tech-card", 1 },
+  },
+}
 
 data.raw.technology["steam-power"].research_trigger = nil
 data.raw.technology["steam-power"].unit = {
@@ -178,9 +195,13 @@ data.raw.technology["chemical-science-pack"].localised_name = { "item-name.chemi
 data.raw.technology["production-science-pack"].localised_name = { "item-name.production-tech-card" }
 data.raw.technology["utility-science-pack"].localised_name = { "item-name.utility-tech-card" }
 data.raw.technology[kr_optimization_tech_card_name].localised_name = { "item-name.optimization-tech-card" }
-data.raw.technology[kr_optimization_tech_card_name].localised_description =
-  { "technology-description.optimization-tech-card" }
+data.raw.technology[kr_optimization_tech_card_name].localised_description = { "technology-description.optimization-tech-card" }
 
+data.raw.technology["electric-mining-drill"].hidden = true
+if mods["space-age"] then
+    data_util.remove_prerequisite("big-mining-drill", "electric-mining-drill")
+    data_util.add_prerequisite("big-mining-drill", "kr-electric-mining-drill")
+end
 -- stylua: ignore start
 data_util.set_icon(data.raw.technology["battery-mk2-equipment"], "__Krastorio2Assets__/technologies/battery-mk2-equipment.png", 256)
 data_util.set_icon(data.raw.technology["chemical-science-pack"], "__Krastorio2Assets__/technologies/chemical-tech-card.png", 256)
